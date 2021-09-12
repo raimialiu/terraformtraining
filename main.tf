@@ -15,6 +15,10 @@ variable "rg_name" {
 
 variable "rg_location" {
   description = "default resource group location"
+  validation {
+    condition = can(index(["West US", "East US"],var.location) >= 0)
+    error_message ="the location must be east or west us"
+  }
 }
 
 
