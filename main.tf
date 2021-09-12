@@ -9,16 +9,9 @@ variable "default_location" {
   default = "West Europe"
 }
 
-variable "rg_name" {
-  description = "resource group name"
-}
-
-variable "rg_location" {
-  description = "default resource group location"
-#   validation {
-#     condition = can(index(["West US", "East US"],var.location) >= 0)
-#     error_message ="the location must be east or west us"
-#   }
+locals {
+  rg_name = var.rg_name
+  rg_location = var.rg_location
 }
 
 
