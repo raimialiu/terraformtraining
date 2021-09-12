@@ -31,6 +31,7 @@ resource "azurerm_sql_database" "kangarooaccountdb" {
   resource_group_name = local.db_location
   server_name = data.azurerm_sql_server.kangroodb.name
   name = "kangaroosecondb"
+  location = local.rg_location
   tags = {
     "purpose" = "terraform training"
   }
