@@ -1,5 +1,7 @@
 provider "azurerm" {
-  
+  features {
+    
+  }
 }
 
 variable "default_location" {
