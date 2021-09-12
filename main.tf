@@ -12,7 +12,7 @@ variable "default_location" {
 locals {
   rg_name = var.rg_name
   rg_location = var.rg_location
-  db_location ="dockerswarmtutsdockerswarmtutsdockerswarmtutsdockerswarmtutsdockerswarmtuts"
+  db_location ="dockerswarmtuts"
 }
 
 data "azurerm_sql_server" "kangroodb" {
