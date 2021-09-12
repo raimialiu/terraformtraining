@@ -31,29 +31,29 @@ resource "local_file" "name" {
   filename = "hello.txt"
 }
 
-resource "azurerm_sql_database" "kangarooaccountdb" {
-  resource_group_name = local.db_location
-  depends_on = [
-    data.azurerm_sql_server.kangroodb
-  ]
-  server_name = data.azurerm_sql_server.kangroodb.id
-  name = "kangaroosecondb"
-  location = local.rg_location
-  tags = {
-    "purpose" = "terraform training"
-  }
-}
+# resource "azurerm_sql_database" "kangarooaccountdb" {
+#   resource_group_name = local.db_location
+#   depends_on = [
+#     data.azurerm_sql_server.kangroodb
+#   ]
+#   server_name = data.azurerm_sql_server.kangroodb.id
+#   name = "kangaroosecondb"
+#   location = local.rg_location
+#   tags = {
+#     "purpose" = "terraform training"
+#   }
+# }
 
-output "rg_name" {
-  value = azurerm_resource_group.terraform_training
-  description = "output of resource group"
-}
+# output "rg_name" {
+#   value = azurerm_resource_group.terraform_training
+#   description = "output of resource group"
+# }
 
-output "db_instance" {
-  value = azurerm_sql_database.kangarooaccountdb.id
-}
+# output "db_instance" {
+#   value = azurerm_sql_database.kangarooaccountdb.id
+# }
 
 
-output "servername" {
-  value = azurerm_sql_database.kangarooaccountdb.server_name
-}
+# output "servername" {
+#   value = azurerm_sql_database.kangarooaccountdb.server_name
+# }
