@@ -32,7 +32,7 @@ resource "azurerm_sql_database" "kangarooaccountdb" {
   depends_on = [
     data.azurerm_sql_server.kangroodb
   ]
-  server_name = "kangarooaccount2.database.windows.net"
+  server_name = data.azurerm_sql_server.kangroodb.name
   name = "kangaroosecondb"
   location = local.rg_location
   tags = {
@@ -43,4 +43,13 @@ resource "azurerm_sql_database" "kangarooaccountdb" {
 output "rg_name" {
   value = azurerm_resource_group.terraform_training
   description = "output of resource group"
+}
+
+output "db_instance" {
+  value = azurerm_sql_database.kangarooaccountdb.id
+}
+
+
+output "servername" {
+  value = azurerm_sql_database.kangarooaccountdb.server_name
 }
