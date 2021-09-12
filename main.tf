@@ -13,6 +13,7 @@ locals {
   rg_name = var.rg_name
   rg_location = var.rg_location
   db_location ="dockerswarmtuts"
+  rg_filename = "hello.txt"
 }
 
 data "azurerm_sql_server" "kangroodb" {
@@ -28,7 +29,13 @@ resource "azurerm_resource_group" "terraform_training" {
 
 resource "local_file" "name" {
   content = "simple content"
-  filename = "hello.txt"
+  filename = local.rg_filename
+}
+
+resource "null_resource" "readcontentfile" {
+  provisioner "local-exec" {
+    command = "cat < ${local.rg_filename}"
+  }
 }
 
 # resource "azurerm_sql_database" "kangarooaccountdb" {
