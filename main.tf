@@ -16,7 +16,7 @@ locals {
 }
 
 data "azurerm_sql_server" "kangroodb" {
-    name = "kangarooaccount2.database.windows.net"
+    name = "kangarooaccount2"
     resource_group_name = local.db_location
   
 }
@@ -32,7 +32,7 @@ resource "azurerm_sql_database" "kangarooaccountdb" {
   depends_on = [
     data.azurerm_sql_server.kangroodb
   ]
-  server_name = data.azurerm_sql_server.kangroodb.name
+  server_name = "kangarooaccount2.database.windows.net"
   name = "kangaroosecondb"
   location = local.rg_location
   tags = {
