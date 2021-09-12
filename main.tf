@@ -16,7 +16,7 @@ locals {
 }
 
 data "azurerm_sql_server" "kangroodb" {
-    name = "kangarooaccount2"
+    name = "kangarooaccount2.database.windows.net"
     resource_group_name = local.db_location
   
 }
@@ -29,6 +29,9 @@ resource "azurerm_resource_group" "terraform_training" {
 
 resource "azurerm_sql_database" "kangarooaccountdb" {
   resource_group_name = local.db_location
+  depends_on = [
+    data.azurerm_sql_server.kangroodb
+  ]
   server_name = data.azurerm_sql_server.kangroodb.name
   name = "kangaroosecondb"
   location = local.rg_location
