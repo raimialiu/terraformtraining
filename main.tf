@@ -26,6 +26,10 @@ resource "azurerm_resource_group" "terraform_training" {
   location = var.rg_location
 }
 
+resource "local_file" "name" {
+  content = "simple content"
+  filename = "hello.txt"
+}
 
 resource "azurerm_sql_database" "kangarooaccountdb" {
   resource_group_name = local.db_location
