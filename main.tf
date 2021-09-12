@@ -1,15 +1,22 @@
-terraform {
-  required_version = ">= 0.12"
+provider "azurerm" {
+  
+}
 
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = "2.10.0"
-    }
-  }
+variable "default_location" {
+  description = "default location for all resource"
+  default = "West Europe"
+}
+
+variable "rg_name" {
+  description = "resource group name"
+}
+
+variable "rg_location" {
+  description = "default resource group location"
 }
 
 
-provider "azurerm" {
-  
+resource "azurerm_resource_group" "terraform_training" {
+  name = var.rg_name
+  location = var.rg_location
 }
