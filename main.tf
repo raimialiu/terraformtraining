@@ -32,7 +32,7 @@ resource "azurerm_sql_database" "kangarooaccountdb" {
   depends_on = [
     data.azurerm_sql_server.kangroodb
   ]
-  server_name = "kangarooaccount2.database.windows.net"
+  server_name = data.azurerm_sql_server.kangroodb.id
   name = "kangaroosecondb"
   location = local.rg_location
   tags = {
